@@ -1,0 +1,201 @@
+{% comment %} {% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Blogs</title>
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link href="{% static 'css/blog.css'%}" rel="stylesheet">
+  </head>
+<body>
+    <div class="container">
+      <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-8 pt-1">
+            <a class="blog-header-logo text-dark" href="/">Django Blog</a>
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+            <a class="btn btn-sm btn-warning" href="#">Login</a> &nbsp;
+            <a class="btn btn-sm btn-outline-secondary" href="#">Register</a>
+        </div>
+        </div>
+    </header>
+</body>
+<div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+        {% for cat in categories %}
+        <a class="p-2 text-muted" href="{% url 'posts_by_category' cat.id %}">{{cat.category_name}}</a>
+        {% endfor %}
+    </nav>
+  </div>
+
+
+<!-- Page content-->
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-lg-8">
+          <!-- Post content-->
+          <article>
+              <!-- Post header-->
+              <header class="mb-4">
+                  <!-- Post title-->
+                  <h1 class="fw-bolder mb-1"> {{single_post.title}} </h1>
+                  <!-- Post meta content-->
+                  <div class="text-muted fst-italic mb-2">Posted on {{single_post.created_at}} by {{single_post.author}} </div>
+                  <!-- Post category-->
+                  <a class="badge bg-primary text-decoration-none text-light" href="#!"> {{single_post.category}} </a>
+              </header>
+              <!-- Preview image figure-->
+              <figure class="mb-4"><img class="img-fluid rounded" src="{{single_post.blog_image.url}}" alt="..." /></figure>
+              <!-- Post content-->
+              <section class="mb-5">
+                  <p class="fs-5 mb-4"> {{single_post.short_description}} </p>
+                  <p class="fs-5 mb-4">{{single_post.blog_body}} </p>
+                  </section>
+          </article>
+      </div>
+      <!-- Side widgets-->
+      <div class="col-lg-4">
+          <!-- Search widget-->
+          <div class="card mb-4">
+              <div class="card-header">Search</div>
+              <div class="card-body">
+                  <div class="input-group">
+                      <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                      <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                  </div>
+              </div>
+          </div>
+          <!-- Categories widget-->
+          <div class="card mb-4 p-3">
+              <h4 class="font-italic">Categories</h4>
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <ul class="list-unstyled mb-0">
+                              <li><a href="#!">Web Design</a></li>
+                              <li><a href="#!">HTML</a></li>
+                              <li><a href="#!">Freebies</a></li>
+                          </ul>
+                      </div>
+                      <div class="col-sm-6">
+                          <ul class="list-unstyled mb-0">
+                              <li><a href="#!">JavaScript</a></li>
+                              <li><a href="#!">CSS</a></li>
+                              <li><a href="#!">Tutorials</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- Side widget-->
+        
+      </div>
+  </div>
+</div>
+ {% endcomment %}
+
+
+
+{% load static %}
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Django Blogs</title>
+     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+     <link href="{% static 'css/blog.css'%}" rel="stylesheet">
+ </head>
+ <body>
+     <div class="container">
+         <header class="blog-header py-3">
+             <div class="row flex-nowrap justify-content-between align-items-center">
+                 <div class="col-8 pt-1">
+                     <a class="blog-header-logo text-dark" href="/">Django Blog</a>
+                 </div>
+                 <div class="col-4 d-flex justify-content-end align-items-center">
+                     <a class="btn btn-sm btn-warning" href="#">Login</a> &nbsp;
+                     <a class="btn btn-sm btn-outline-secondary" href="#">Register</a>
+                 </div>
+             </div>
+         </header>
+     </div>
+ 
+     <div class="nav-scroller py-1 mb-2">
+         <nav class="nav d-flex justify-content-between">
+             {% for cat in categories %}
+                 <a class="p-2 text-muted" href="{% url 'posts_by_category' cat.id %}">{{ cat.category_name }}</a>
+             {% endfor %}
+         </nav>
+     </div>
+ 
+     <!-- Page content -->
+     <div class="container mt-5">
+         <div class="row">
+             <div class="col-lg-8">
+                 <!-- Iterate over the list of posts -->
+                 
+                     <article>
+                         <!-- Post header -->
+                         <header class="mb-4">
+                             <!-- Post title -->
+                             <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
+                             <!-- Post meta content -->
+                             <div class="text-muted fst-italic mb-2">Posted on {{ post.created_at }} by {{ post.author }}</div>
+                             <!-- Post category -->
+                             <a class="badge bg-primary text-decoration-none text-light" href="#!">{{ post.category.category_name }}</a>
+                         </header>
+                         <!-- Preview image figure -->
+                         <figure class="mb-4"><img class="img-fluid rounded" src="{{ post.blog_image.url }}" alt="..." /></figure>
+                         <!-- Post content -->
+                         <section class="mb-5">
+                             <p class="fs-5 mb-4">{{ post.short_description }}</p>
+                             <p class="fs-5 mb-4">{{ post.blog_body }}</p>
+                         </section>
+                     </article>
+                     <hr>
+                 
+             </div>
+             <!-- Side widgets -->
+             <div class="col-lg-4">
+                 <!-- Search widget -->
+                 <div class="card mb-4">
+                     <div class="card-header">Search</div>
+                     <div class="card-body">
+                         <div class="input-group">
+                             <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                             <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                         </div>
+                     </div>
+                 </div>
+                 <!-- Categories widget -->
+                 <div class="card mb-4 p-3">
+                     <h4 class="font-italic">Categories</h4>
+                     <div class="card-body">
+                         <div class="row">
+                             <div class="col-sm-6">
+                                 <ul class="list-unstyled mb-0">
+                                     {% for cat in categories %}
+                                         <li><a href="{% url 'posts_by_category' cat.id %}">{{ cat.category_name }}</a></li>
+                                     {% endfor %}
+                                 </ul>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <!-- Side widget -->
+             </div>
+         </div>
+     </div>
+ 
+     <footer class="blog-footer">
+         <p>Django blog built with ❤️ by <a href="#">Param Parekh</a></p>
+     </footer>
+ </body>
+ </html>
