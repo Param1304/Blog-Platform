@@ -8,16 +8,12 @@ A **modern, full-stack blogging platform** built using **HTML**, **CSS**, and **
 ### User Experience  
 - 📝 **Create, Edit, and Delete Posts**: Authenticated users can manage their blog posts effortlessly.  
 - 🔒 **User Authentication**: Sign up, log in, and manage your profile securely.  
-- 🔍 **Search and Filter**: Quickly find blogs with intuitive search and category filters.  
 - 🎨 **Responsive Design**: Beautiful, mobile-friendly UI for all devices.  
-
-### Community Engagement  
-- 💬 **Comment System**: Engage with content by leaving comments.  
-- ❤️ **Like and Share**: Show appreciation and share blogs on social media.  
+ 
 
 ### Admin Features  
-- 🛠️ **Content Management**: Admin dashboard to manage users, posts, and comments.  
-- 📊 **Analytics Dashboard**: Insights into popular posts and user activity.
+- 🛠️ **Content Management**: Admin dashboard to manage users and posts.  
+- 📊 **Analytics Dashboard**: Insights into category-wise posts and total count.
 
 ---
 
